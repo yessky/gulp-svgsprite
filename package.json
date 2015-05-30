@@ -1,44 +1,28 @@
 {
-  "name": "gulp-svgstore",
-  "version": "5.0.2",
+  "name": "gulp-svgsprite",
+  "version": "1.0.0",
   "description": "Combine svg files into one with <symbol> elements",
   "main": "index.js",
-  "scripts": {
-    "test": "gulp test"
-  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/w0rm/gulp-svgstore"
+    "url": "git://github.com/yessky/gulp-svgsprite"
   },
-  "author": {
-    "name": "Andrey Kuzmin",
-    "email": "unsoundscapes@gmail.com"
-  },
+  "author": "aaron.xiao <admin@veryos.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/w0rm/gulp-svgstore/issues"
+    "url": "https://github.com/yessky/gulp-svgsprite/issues"
   },
-  "homepage": "https://github.com/w0rm/gulp-svgstore",
+  "homepage": "https://github.com/yessky/gulp-svgsprite",
   "dependencies": {
     "cheerio": "0.*",
     "gulp-util": "^3.0.0",
     "through2": "^0.6.5"
-  },
-  "devDependencies": {
-    "connect": "^3.1.0",
-    "gm": "^1.18.1",
-    "gulp": "^3.6.2",
-    "gulp-cheerio": "^0.6.2",
-    "gulp-inject": "^1.0.1",
-    "gulp-mocha": "^2.1.0",
-    "serve-static": "^1.9.3",
-    "tmp": "0.0.26",
-    "wd": "^0.3.4"
   },
   "keywords": [
     "gulpplugin",
     "svg",
     "icon",
     "sprite"
-  ]
+  ],
+  "devDependencies": {}
 }

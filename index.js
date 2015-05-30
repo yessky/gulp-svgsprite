@@ -10,6 +10,7 @@ module.exports = function (config) {
   var isEmpty = true
   var fileName
   var inlineSvg = config.inlineSvg || false
+  var metaAttrs = config.metaAttrs || false
   var ids = {}
 
   var resultSvg = '<svg xmlns="http://www.w3.org/2000/svg" ><defs/></svg>'
@@ -24,6 +25,7 @@ module.exports = function (config) {
   var $ = cheerio.load(resultSvg, { xmlMode: true })
   var $combinedSvg = $('svg')
   var $combinedDefs = $('defs')
+  var metadata = {}
 
   return through2.obj(
 
@@ -61,6 +63,33 @@ module.exports = function (config) {
         isEmpty = false
       }
 
+      var toString = Object.prototype.toString
+      if (toString.call(metaAttrs) === "[object Array]" && metaAttrs.length > 0) {
+        var firstPath = file.cheerio("path").first()
+        var useSvg = {
+          width: 1,
+          height: 1
+        }
+        var nonattr = "@@non@@"
+        var ret = {}
+        ret[nonattr] = 1
+        metaAttrs.forEach(function(attr, i) {
+          if (useSvg[attr] && $svg.attr(attr)) {
+            ret[attr] = $svg.attr(attr)
+            delete ret[nonattr]
+          } else if (firstPath.attr(attr)) {
+            ret[attr] = firstPath.attr(attr)
+            delete ret[nonattr]
+          }
+        })
+        if (!ret[nonattr]) {
+          if (!ret.name) {
+            ret.name = idAttr
+          }
+          metadata[idAttr] = ret
+        }
+      }
+
       $symbol.attr('id', idAttr)
       if (viewBoxAttr) {
         $symbol.attr('viewBox', viewBoxAttr)
@@ -84,6 +113,7 @@ module.exports = function (config) {
       }
       var file = new gutil.File({ path: fileName, contents: new Buffer($.xml()) })
       file.cheerio = $
+      file.metadata = metadata
       this.push(file)
       cb()
     }
