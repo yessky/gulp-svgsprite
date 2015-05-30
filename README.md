@@ -1,6 +1,8 @@
 gulp-svgsprite forked from [gulp-svgstore](https://github.com/w0rm/gulp-svgstore)
 =============
 
+this project is forked from [gulp-svgstore](https://github.com/w0rm/gulp-svgstore)
+
 See [docs](https://github.com/w0rm/gulp-svgstore)
 
 ## Changes
