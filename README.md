@@ -1,4 +1,4 @@
-gulp-svgsprite forked from [gulp-svgstore](https://github.com/w0rm/gulp-svgstore)
+gulp-svgsprite
 =============
 
 this project is forked from [gulp-svgstore](https://github.com/w0rm/gulp-svgstore)
