@@ -1,13 +1,11 @@
 gulp-svgsprite
 =============
 
-this project is forked from [gulp-svgstore](https://github.com/w0rm/gulp-svgstore). I make it to support "metaAttrs" and "cleanAttrs". so that we can extract svg icon's metadata or clean useless attributes. 
+this project is forked from [gulp-svgstore](https://github.com/w0rm/gulp-svgstore). I make it to support "metaAttrs" and "cleanAttrs". 
 
-## Notes
+"metaAttrs"[attribute array] - for extracting icons' meta data, I can control more, like generate correspondent css file based on the meta data.
 
-added config option "metaAttrs" for extracting icon's metadata. it's helpful to generate correspondent css of icon's default style.
-
-added config option "cleanAttrs" for remove useless attributes, it's helpful to customize the icon style and decrease file size.
+"cleanAttrs"[attribute array] - for removing useless attributes or cleannig primitive attributes(so that I can use css to control color/width/height/stroke-with, etc).
 
 ## Example
 
