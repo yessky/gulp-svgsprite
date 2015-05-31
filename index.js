@@ -11,6 +11,7 @@ module.exports = function (config) {
   var fileName
   var inlineSvg = config.inlineSvg || false
   var metaAttrs = config.metaAttrs || false
+  var cleanAttrs = config.cleanAttrs || false
   var ids = {}
 
   var resultSvg = '<svg xmlns="http://www.w3.org/2000/svg" ><defs/></svg>'
@@ -83,8 +84,8 @@ module.exports = function (config) {
           }
         })
         if (!ret[nonattr]) {
-          if (!ret.name) {
-            ret.name = idAttr
+          if (ret.name) {
+            delete ret.name
           }
           metadata[idAttr] = ret
         }
@@ -102,6 +103,14 @@ module.exports = function (config) {
       }
 
       $symbol.append($svg.contents())
+      if (toString.call(cleanAttrs) === "[object Array]" && cleanAttrs.length > 0) {
+        var selector = "[" + cleanAttrs.join("],[") + "]"
+        var elems = $symbol.find(selector)
+        cleanAttrs.forEach(function(attr) {
+          elems.removeAttr(attr)
+        })
+      }
+
       $combinedSvg.append($symbol)
       cb()
     }
